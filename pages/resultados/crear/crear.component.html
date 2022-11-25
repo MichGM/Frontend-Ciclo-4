@@ -1,0 +1,62 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header *ngIf="modoCreacion">
+            CREAR RESULTADO
+        </nb-card-header>
+        <nb-card-header *ngIf="!modoCreacion">
+            ACTUALIZAR RESULTADO
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-3">
+                    <label>Candidato</label>
+                </div>
+                <div class="col-9">
+                    <!-- <input class="form-control" type="text" 
+                           [(ngModel)]="elCandidato.apellido"> -->
+                    <select class="form-control" id="exampleFormControlSelect1" (input)="guardarIdCandidato( $event )">
+                        <option *ngFor="let candidatoActual of candidatos" >{{candidatoActual.nombre}}</option>
+                    </select>
+                    <!-- <p *ngIf="intentoEnvio && elCandidato.apellido=='' ">Requerido</p> -->
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>Mesa</label>
+                </div>
+                <div class="col-9">
+                    <!-- <input class="form-control" type="text" 
+                           [(ngModel)]="elCandidato.apellido"> -->
+                    <select class="form-control" id="exampleFormControlSelect1" (input)="guardarIdMesa( $event )">
+                        <option *ngFor="let mesaActual of mesas" >{{mesaActual.numero}}</option>
+                    </select>
+                    <!-- <p *ngIf="intentoEnvio && elCandidato.apellido=='' ">Requerido</p> -->
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>Votos</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="number" 
+                           [disabled]="!modoCreacion" 
+                           [(ngModel)]="elResultado.votos">
+                    <p *ngIf="intentoEnvio && elResultado.votos==0 ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                    <button  *ngIf="modoCreacion" 
+                              class="btn btn-primary btn-block"  (click)="agregar()">
+                        Crear
+                    </button>
+                    <button *ngIf="!modoCreacion" 
+                            class="btn btn-primary btn-block"  (click)="editar()">
+                        Actualizar
+                    </button>
+            </div>
+        </nb-card-body>
+    </nb-card> 
+</div>

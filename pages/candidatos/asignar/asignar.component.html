@@ -1,0 +1,64 @@
+<div class="col-lg-12">
+    <nb-card>
+        <nb-card-header>
+            ASIGNAR PARTIDO A CANDIDATO
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-3">
+                    <label>Cedula</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text" 
+                           [disabled]="true" 
+                           [(ngModel)]="elCandidato.cedula">
+                    <p *ngIf="intentoEnvio && elCandidato.cedula=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>Nombre</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text"
+                           [disabled]="true" 
+                           [(ngModel)]="elCandidato.nombre">
+                    <p *ngIf="intentoEnvio && elCandidato.nombre=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>Apellido</label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control" type="text"
+                           [disabled]="true"
+                           [(ngModel)]="elCandidato.apellido">
+                    <p *ngIf="intentoEnvio && elCandidato.apellido=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-3">
+                    <label>Partido</label>
+                </div>
+                <div class="col-9">
+                    <!-- <input class="form-control" type="text" 
+                           [(ngModel)]="elCandidato.apellido"> -->
+                    <select class="form-control" id="exampleFormControlSelect1" (input)="guardarid( $event )">
+                        <option *ngFor="let partidoActual of partidos" >{{partidoActual.nombre}}</option>
+                    </select>
+                    <p *ngIf="intentoEnvio && elCandidato.apellido=='' ">Requerido</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                    <button class="btn btn-primary btn-block"  (click)="asignar()">
+                        Asignar
+                    </button>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>
